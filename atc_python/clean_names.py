@@ -37,6 +37,8 @@ class CleanNames:
 
     def create_matching_dict(self, dataframe: pd.DataFrame) -> dict:
         old_names = dataframe.columns
-        matching_dict = {new: old for new, old in zip(self.names, old_names)}
-        self.old_new_match = matching_dict
-        return self
+        matching_dict = {new:old for (new, old) in zip(self.names, old_names)}
+        return matching_dict
+
+    def __call__(self):
+        return self.names

@@ -34,5 +34,8 @@ def test_clean_names():
         assert clean_pattern.fullmatch(name) is not None
 
 def test_matching_dict():
-    assert type(name_cleaner.old_new_match) == dict
-    assert len(name_cleaner.old_new_match) == DF.shape[1]
+    assert type(name_cleaner.new_old_match) == dict
+    assert len(name_cleaner.new_old_match) == DF.shape[1]
+
+def test_print_object():
+    assert type(name_cleaner()) == list
