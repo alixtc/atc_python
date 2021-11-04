@@ -1,9 +1,11 @@
 import unicodedata
 import pandas as pd
 
+__all__ = ['CleanNames']
+
 class CleanNames:
     def __init__(self, dataframe: pd.DataFrame):
-        self.names = self.clean_names(dataframe)
+        self.columns = self.clean_names(dataframe)
         self.new_old_match = self.create_matching_dict(dataframe)
 
     def strip_accents(self, text):
@@ -37,8 +39,8 @@ class CleanNames:
 
     def create_matching_dict(self, dataframe: pd.DataFrame) -> dict:
         old_names = dataframe.columns
-        matching_dict = {new:old for (new, old) in zip(self.names, old_names)}
+        matching_dict = {new:old for (new, old) in zip(self.columns, old_names)}
         return matching_dict
 
     def __call__(self):
-        return self.names
+        return self.columns
