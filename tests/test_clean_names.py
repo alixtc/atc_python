@@ -14,17 +14,20 @@ COLUMN_NAMES = [
     '1260_T° Lampe IR 3',
     'Poids résine piece sortie op1260',
     'N° Série',
-    'COMPTEUR PIECE DANS PINCE op1260'
+    'R<1> [Ohm]',
 ]
 
 DF = pd.DataFrame(np.arange(1, 13).reshape(1, 12),
                   columns=COLUMN_NAMES)
-
 name_cleaner = CleanNames(DF)
 
 def test_clean_one_name():
+    # TODO: Check how it deals with µ, $,€ & and common characters
     new_name = name_cleaner.clean_one_name('T° tunnel gélification op1260(10st4)')
     assert new_name == 't_tunnel_gelification_op1260_10st4'
+
+    new_name = name_cleaner.clean_one_name('R<1> [Ohm]')
+    assert new_name == 'r_1_ohm'
 
 def test_clean_names():
     # re search returns None if one letter not in pattern

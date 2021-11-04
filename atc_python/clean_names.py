@@ -25,7 +25,7 @@ class CleanNames:
                 new_name += " "
         new_name = self.strip_accents(new_name).lower()
         new_name = new_name.replace("  ", " ").strip()
-        new_name = new_name.replace(" ", "_")
+        new_name = new_name.replace(" ", "_").replace('__', '_')
         return new_name
 
     def clean_names(self, dataframe: pd.DataFrame) -> list:
