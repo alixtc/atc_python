@@ -33,8 +33,7 @@ class CleanNames:
         Returns the columns names of a dataframe with only latin letters
         written in snake_case
         """
-        column_names = dataframe.columns
-        new_names = [self.clean_one_name(name) for name in column_names]
+        new_names = [self.clean_one_name(name) for name in dataframe.columns]
         return new_names
 
     def create_matching_dict(self, dataframe: pd.DataFrame) -> dict:

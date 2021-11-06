@@ -1,8 +1,6 @@
 # Data analysis
 - Document here the project: atc_python
 - Description: Project Description
-- Data Source:
-- Type of analysis:
 
 Please document the project the better you can.
 
